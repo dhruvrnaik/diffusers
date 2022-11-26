@@ -222,7 +222,7 @@ class FlaxStableDiffusionPipeline(FlaxDiffusionPipeline):
             width // self.vae_scale_factor,
         )
         if latents is None:
-            latents = jax.random.normal(prng_seed, shape=latents_shape, dtype=jnp.float32)
+            latents = jax.random.normal(prng_seed, shape=latents_shape, dtype=self.dtype)
         else:
             if latents.shape != latents_shape:
                 raise ValueError(f"Unexpected latents shape, got {latents.shape}, expected {latents_shape}")
